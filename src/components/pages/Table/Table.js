@@ -1,10 +1,25 @@
-import EditTableForm from "../../features/EditTableForm"
+import { useSelector } from 'react-redux';
+import { getTables } from '../../../redux/tablesRedux';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
-const Table = () => {
-    return (
-        <div><EditTableForm/></div>
 
-    )
-}
+const Tables = () => {
+const tables = useSelector(getTables);
+const navigate = useNavigate();
 
-export default Table
+return (
+    <ListGroup variant="flush" className="mt-4">
+            <h3>Table {table.id}</h3>
+            <h5 className="mx-3"><b>Status:</b> {table.status}</h5>
+            </div>
+            <Button variant="primary" onClick={() => navigate(`/table/${table.id}`)}>Show More</Button>
+            </div>
+        </ListGroup.Item>
+    ))}
+    </ListGroup>
+);
+};
+
+export default Tables;
